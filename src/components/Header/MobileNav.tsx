@@ -60,6 +60,8 @@ export const MobileNav = () => {
 
 
   const changeOpenState = (move: 'close' | 'open', setState: Dispatch<SetStateAction<string | null>>) => {
+
+
     if (move === 'open') {
       setState('navMobileMenuOpening')
       setTimeout(() => {
@@ -79,7 +81,6 @@ export const MobileNav = () => {
 
   const MobileNavSub = () => {
 
-
     const closeAll = () => {
       changeOpenState('close', setOpen)
       changeOpenState('close', setOpenSub)
@@ -93,7 +94,6 @@ export const MobileNav = () => {
           </button>
           <span>{navItems && navItems.title}</span>
         </div>
-        <hr />
         <ul className={styles.navMobileList}>
           {navItems && navItems.links.map(({ id, href: mainHref, name }) =>
             <li key={id} className={styles.navMobileListItem} onClick={() => closeAll()}>
@@ -124,7 +124,6 @@ export const MobileNav = () => {
           </button>
           <span>{defaultNavItems.title}</span>
         </div>
-        <hr />
         <ul className={styles.navMobileList}>
           {defaultNavItems.links.map(({ id, href: mainHref, name, sublist }) => {
             if (!sublist) {

@@ -4,6 +4,6 @@ interface IBanner {
   header: string
   desc: string
   image: string
-  type: 'laptop' | 'mobile'
+  type: 'laptop-left' | 'mobile' | 'laptop-right'
   href: string
 }

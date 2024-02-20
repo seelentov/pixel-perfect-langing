@@ -24,9 +24,9 @@ export const Banner: FC<IBannerProps> = ({ data }) => {
           clickable: true,
         }}
       >
-        {data.map((bannerItem) => {
+        {data.map((bannerItem, index) => {
           return (
-            <SwiperSlide key={bannerItem.id}><BannerItem {...{ ...bannerItem }} /></SwiperSlide>
+            <SwiperSlide key={bannerItem.id}><BannerItem {...{ ...bannerItem }} pos={index === 0 ? 'first' : index === data.length - 1 ? 'last' : false}/></SwiperSlide>
           )
         })}
       </Swiper>

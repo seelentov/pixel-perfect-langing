@@ -1,4 +1,7 @@
-import { FC } from 'react';
+'use client'
+
+import cn from 'classnames';
+import { FC, useState } from 'react';
 import styles from './Stages.module.scss';
 import { StagesItem } from './StagesItem';
 
@@ -8,15 +11,20 @@ export interface IStagesProps {
 }
 
 export const Stages: FC<IStagesProps> = ({ data, header }) => {
+
+  const [active, setActive] = useState<null | number>(0)
+
   return (
     <section className={styles.main}>
       <div className="container">
         <h2 className='text-header'>{header}</h2>
-        <ul className={styles.list}>
+        <div className={styles.list}>
           {data.map((advantage, index) =>
-            <StagesItem key={advantage.id} index={index} {...{ ...advantage }} />
+            <div onClick={() => setActive(index)} className={cn(styles.item, index === active && styles.itemActive)} style={{ marginLeft: `${(7 * index)}%` }}>
+              <StagesItem key={advantage.id} {...{ ...advantage }} />
+            </div>
           )}
-        </ul>
+        </div>
       </div>
     </section>
   );

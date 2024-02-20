@@ -70,11 +70,13 @@
   justify-content: space-between;
   align-items: center;
   gap: 54px;
-  padding: 15px 0;
+  height: 51px;
+  border-bottom: 1px solid var(--color_sec-3);
+
 
   @media (max-width: 1023px) {
     padding: 0;
-    height: 48px;
+    height: 51px;
   }
 
 }
@@ -146,6 +148,8 @@
   position: relative;
 
   &>a {
+    display: block;
+    padding: 15px 0;
     transition: all .2s ease-in-out;
   }
 
@@ -165,6 +169,7 @@
 }
 
 .navDesktopSubList {
+  top: 51px;
   min-width: 206px;
   background-color: white;
   padding: 10px 0;
@@ -172,6 +177,34 @@
   display: none; //flex
   opacity: 0;
   flex-direction: column;
+  border-bottom: 1px solid var(--color_sec-3);
+  border-left: 1px solid var(--color_sec-3);
+  border-right: 1px solid var(--color_sec-3);
+  border-radius: 0 0 5px 5px;
+
+  &:hover {
+    display: flex;
+    animation-duration: 0.2s;
+    animation-name: show;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+
+  &:after{
+    content: "";
+    position: absolute;
+    top: -15px;
+    width: 100%;
+    height: 15px;
+    :hover{
+      display: flex;
+      animation-duration: 0.5s;
+      animation-name: show;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease-in-out;
+    }
+    
+  }
 }
 
 @keyframes show {
@@ -199,6 +232,7 @@
   }
 
   &:hover {
+
     &>a {
       color: var(--color_sec-text) !important;
     }
@@ -212,7 +246,7 @@
   top: 0;
   left: -110%;
   width: 100%;
-  padding: 10px 5px;
+  padding: 0 0 0 15px;
   height: 100vh;
 
   hr {
@@ -232,13 +266,14 @@
   position: absolute;
   top: 0;
   width: 100%;
-  padding: 10px 5px;
+  padding: 0 0 0 15px;
   height: 100vh;
   z-index: 900;
   max-width: 266px;
 
   hr {
     max-width: 100%;
+
   }
 
   -webkit-box-shadow: 9px 9px 29px 4px rgba(34, 60, 80, 0.2);
@@ -281,12 +316,22 @@
   align-items: center;
   gap: 5px;
   font-size: 21px;
-  padding: 4px 0;
+
+  height: 51px;
+
+  border-bottom: 1px solid var(--color_sec-3);
 
   button {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
   }
 }
 

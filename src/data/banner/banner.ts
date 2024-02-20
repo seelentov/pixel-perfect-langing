@@ -5,7 +5,7 @@ export const testBanners: IBanner[] = [
     header: "Landing Page",
     href: "/",
     image: "/test/banner.png",
-    type: "laptop",
+    type: "laptop-left",
     headerType: 'h1'
   },
   {
@@ -15,6 +15,29 @@ export const testBanners: IBanner[] = [
     href: "/",
     image: "/test/banner2.jpg",
     type: "mobile",
-    headerType: 'h1'
-  }
+  },
+  {
+    id: '1',
+    desc: "Создадим для вас эффективный лендинг в Челябинске. Возьмем на себя: маркетинговую стратегию, привлечение пользователей и техническую реализацию.",
+    header: "Landing Page",
+    href: "/",
+    image: "/test/banner.png",
+    type: "laptop-right",
+  },
+  {
+    id: '1',
+    desc: "Создадим для вас эффективный лендинг в Челябинске. Возьмем на себя: маркетинговую стратегию, привлечение пользователей и техническую реализацию.",
+    header: "Landing Page",
+    href: "/",
+    image: "/test/banner.png",
+    type: "laptop-left",
+  },
+  {
+    id: '1',
+    desc: "Создадим для вас эффективный лендинг в Челябинске. Возьмем на себя: маркетинговую стратегию, привлечение пользователей и техническую реализацию.",
+    header: "Landing Page",
+    href: "/",
+    image: "/test/banner.png",
+    type: "laptop-right",
+  },
 ]

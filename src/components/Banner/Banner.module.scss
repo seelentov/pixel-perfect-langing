@@ -4,9 +4,30 @@
   @media (max-width: 1023px) {
     padding: 30px 0;
   }
+
+  @media (min-width: 1024px) {
+    align-items: center;
+    display: flex;
+    height: 82vh;
+  }
 }
 
-.list {}
+.container {
+  max-width: 1449px;
+  margin: 0 auto;
+
+  @media(max-width:1460px) {
+    max-width: 1200px;
+  }
+
+  @media(max-width:1024px) {
+    max-width: 1164px;
+  }
+
+  @media(max-width:992px) {
+    max-width: none !important;
+  }
+}
 
 .item {
   padding: 10px 0;
@@ -17,6 +38,11 @@
   @media (max-width: 1023px) {
     flex-direction: column;
     gap: 66px;
+
+  }
+
+  @media (max-width: 767px) {
+    height: 761px;
   }
 
 }
@@ -24,8 +50,40 @@
 .itemText {
   width: 50%;
 
+  @media (min-width: 1024px) {
+
+    h1,
+    h2 {
+      font-size: 55px;
+      line-height: 35px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+
   @media (max-width: 1023px) {
     width: 100%;
+  }
+
+  @media(max-width:1024px) {
+    max-width: 1164px;
+  }
+
+  @media(max-width:992px) {
+    max-width: 750px;
+  }
+
+  @media(max-width:767px) {
+
+    h1,
+    p {
+      padding: 0 15px;
+
+    }
+
+    max-width: none !important;
   }
 
 }
@@ -42,6 +100,22 @@
 
 
 .itemImageMobile {
+  position: relative;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
+
+  @media (max-width: 767px) {
+    top: -47px;
+  }
+}
+
+.itemImageMobileLaptop {
+  top: -86px;
   position: relative;
   width: 50%;
   display: flex;
@@ -111,6 +185,38 @@
 
 }
 
+.itemImageDeviceMobileLaptop {
+  object-fit: cover;
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+  height: 700px;
+  width: 763px;
+  min-width: 763px;
+  max-width: 763px;
+
+}
+
+.itemImageScreenMobileLaptop {
+  overflow: scroll;
+  position: absolute;
+  z-index: 1;
+  height: 337px;
+  width: 272px;
+  top: 24.1%;
+  background-color: black;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  @media (max-width: 1023px) {
+    left: auto !important;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .itemImageArrowMobile {
   position: absolute;
   top: 10%;
@@ -143,5 +249,25 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+.itemImageScreenMobileLaptopSingle {
+  overflow: scroll;
+  position: absolute;
+  z-index: 1;
+  height: 337px;
+  width: 548px;
+  top: 24.1%;
+  background-color: black;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  @media (max-width: 1023px) {
+    left: auto !important;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }

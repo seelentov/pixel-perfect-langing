@@ -2,7 +2,7 @@ export const webDevListing = [
   {
     id: 1,
     href: '/card',
-    name: 'Сайт - визитка'
+    name: 'Сайт - визитка',
   },
   {
     id: 2,

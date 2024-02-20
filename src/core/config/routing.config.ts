@@ -9,11 +9,6 @@ export const ROUTING = {
       name: 'Главная'
     },
     {
-      id: 2,
-      href: '/about',
-      name: 'Обо мне'
-    },
-    {
       id: 3,
       href: '/native-dev',
       name: 'Разработка приложений',
@@ -43,14 +38,19 @@ export const ROUTING = {
       name: 'Услуги'
     },
     {
+      id: 7,
+      href: '/portfolio',
+      name: 'Примеры работ'
+    },
+    {
       id: 6,
       href: '/support',
       name: 'Поддержка'
     },
     {
-      id: 7,
-      href: '/portfolio',
-      name: 'Примеры работ'
+      id: 2,
+      href: '/about',
+      name: 'Обо мне'
     },
     {
       id: 8,

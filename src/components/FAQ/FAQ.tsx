@@ -1,19 +1,19 @@
 'use client'
 
 import { FC, useEffect, useRef, useState } from 'react';
-import styles from './Advantages.module.scss';
+import styles from './FAQ.module.scss';
 
-export interface IAdvantagesProps {
+export interface IFAQProps {
   data: IAdvantages[]
   header: string
 }
 
-export const Advantages: FC<IAdvantagesProps> = ({ data, header }) => {
+export const FAQ: FC<IFAQProps> = ({ data, header }) => {
 
   const isMobile = window.innerWidth <= 1023
 
   if (isMobile) {
-    return <AdvantagesMobile {...{ data, header }} />
+    return <FAQMobile {...{ data, header }} />
   }
 
 
@@ -35,12 +35,12 @@ export const Advantages: FC<IAdvantagesProps> = ({ data, header }) => {
   }, [thisFaq])
 
 
-  const questionLineFraction = 100 / data.length
-  const questionsLineTop = `calc(${questionLineFraction * (thisFaq - 1)}% + ${10 * (thisFaq - 1)}px)`
+  const questionsLineTop = `calc(${26 * thisFaq}px + ${40 * (thisFaq - 1)}px)`
 
   return (
     <section className={styles.main}>
       <div className='container'>
+        <h2 className='text-header'>{header}</h2>
         <div className={styles.wrapper}>
           <div className={styles.answers} >
             <ul className={styles.answersWrapper} ref={answerRef}>
@@ -63,7 +63,7 @@ export const Advantages: FC<IAdvantagesProps> = ({ data, header }) => {
   );
 }
 
-const AdvantagesMobile: FC<IAdvantagesProps> = ({ data, header }) => {
+const FAQMobile: FC<IFAQProps> = ({ data, header }) => {
   const [thisFaq, setThisFaq] = useState<number | null>(null)
 
   const answerRef = useRef<any>(null)
@@ -91,14 +91,13 @@ const AdvantagesMobile: FC<IAdvantagesProps> = ({ data, header }) => {
   return (
     <section className={styles.main}>
       <div className='container'>
-        <h2 className='text-header' style={{ display: 'none' }}>{header}</h2>
+        <h2 className='text-header'>{header}</h2>
         <div className={styles.wrapper}>
           <div className={styles.answers} >
             <div className={styles.answersWrapper} ref={answerRef}>
               <div className={styles.answersHeader}>
-                <h2 className='text-header'>{header}</h2>
                 <ul>
-                  {data.map((item, index) => <li key={item.id} onClick={() => setThisFaq(index + 1)}>/ {item.title}</li>)}
+                  {data.map((item, index) => <li key={item.id} onClick={() => setThisFaq(index + 1)}>{item.title}</li>)}
                 </ul>
               </div>
               {data.map((item) => <article key={item.id} className={styles.answersItem}>
