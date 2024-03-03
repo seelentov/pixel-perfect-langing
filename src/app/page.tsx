@@ -5,7 +5,7 @@ import { testAdvantages } from "@/data/advantages/advantages.1";
 import { testAdvantages2 } from "@/data/advantages/advantages.2";
 import { testBanners } from "@/data/banner/banner";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Banner data={testBanners} />

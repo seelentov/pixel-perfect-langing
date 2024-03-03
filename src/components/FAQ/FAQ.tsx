@@ -1,6 +1,7 @@
 'use client'
 
 import { FC, useEffect, useRef, useState } from 'react';
+import { BrowserView, MobileView, isMobile } from "react-device-detect";
 import styles from './FAQ.module.scss';
 
 export interface IFAQProps {
@@ -9,16 +10,7 @@ export interface IFAQProps {
 }
 
 export const FAQ: FC<IFAQProps> = ({ data, header }) => {
-
-  const isMobile = window.innerWidth <= 1023
-
-  if (isMobile) {
-    return <FAQMobile {...{ data, header }} />
-  }
-
-
   const [thisFaq, setThisFaq] = useState<number>(1)
-
   const answerRef = useRef<any>(null)
 
   useEffect(() => {
@@ -34,32 +26,39 @@ export const FAQ: FC<IFAQProps> = ({ data, header }) => {
 
   }, [thisFaq])
 
-
   const questionsLineTop = `calc(${26 * thisFaq}px + ${40 * (thisFaq - 1)}px)`
 
   return (
-    <section className={styles.main}>
-      <div className='container'>
-        <h2 className='text-header'>{header}</h2>
-        <div className={styles.wrapper}>
-          <div className={styles.answers} >
-            <ul className={styles.answersWrapper} ref={answerRef}>
-              {data.map((item) => <li key={item.id} className={styles.answersItem}>{item.text}</li>)}
-            </ul>
-          </div>
-          <div className={styles.first}>
-            <div className={styles.questions}>
-              <div className={styles.questionsLine}>
-                <span style={{ top: questionsLineTop }}></span>
+    <>
+      <BrowserView>
+        <section className={styles.main}>
+          <div className='container'>
+            <h2 className='text-header'>{header}</h2>
+            <div className={styles.wrapper}>
+              <div className={styles.answers} >
+                <ul className={styles.answersWrapper} ref={answerRef}>
+                  {data.map((item) => <li key={item.id} className={styles.answersItem}>{item.text}</li>)}
+                </ul>
               </div>
-              <ul className={styles.questionsText}>
-                {data.map((item, index) => <li onMouseEnter={() => setThisFaq(index + 1)} key={item.id} className={styles.questionsTextItem}>{item.title}</li>)}
-              </ul>
+              <div className={styles.first}>
+                <div className={styles.questions}>
+                  <div className={styles.questionsLine}>
+                    <span style={{ top: questionsLineTop }}></span>
+                  </div>
+                  <ul className={styles.questionsText}>
+                    {data.map((item, index) => <li onMouseEnter={() => setThisFaq(index + 1)} key={item.id} className={styles.questionsTextItem}>{item.title}</li>)}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      </BrowserView>
+      <MobileView>
+        <FAQMobile {...{ data, header }} />
+      </MobileView>
+    </>
+
   );
 }
 

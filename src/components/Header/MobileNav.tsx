@@ -5,6 +5,7 @@ import cn from 'classnames';
 import { Twirl as Hamburger } from 'hamburger-react';
 import Link from "next/link";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { MobileView } from "react-device-detect";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import styles from './Header.module.scss';
 
@@ -36,12 +37,6 @@ export const MobileNav = () => {
   const [isOpenSub, setOpenSub] = useState<string | null>(null)
 
   const [navItems, setNavItems] = useState<NavItems | null>(null)
-
-  const isShow = window.innerWidth <= 1200
-
-  if (!isShow) {
-    return
-  }
 
   useEffect(() => {
     const html = document.querySelector('html');
@@ -112,34 +107,36 @@ export const MobileNav = () => {
   }
 
   return (
-    <nav className={styles.navMobile}>
-      <div className={cn(styles.navMobileBG, isOpenBoolean && styles.navMobileBGOpen)}></div>
-      <button className={styles.navMobileBtnMenu} onClick={() => changeOpenState('open', setOpen)}>
-        <Hamburger toggled={isOpen === 'open'} size={25} />
-      </button>
-      <div className={cn(styles.navMobileMenu, isOpen && styles[isOpen])}>
-        <div className={styles.navMobileMenuHeader}>
-          <button className={styles.navMobileMenuBackBtn} onClick={() => changeOpenState('close', setOpen)}>
-            <SlArrowLeft size={15} />
-          </button>
-          <span>{defaultNavItems.title}</span>
-        </div>
-        <ul className={styles.navMobileList}>
-          {defaultNavItems.links.map(({ id, href: mainHref, name, sublist }) => {
-            if (!sublist) {
-              return <li key={id} className={styles.navMobileListItem} onClick={() => changeOpenState('close', setOpen)}>
-                <Link href={mainHref}>{name}</Link>
+    <MobileView>
+      <nav className={styles.navMobile}>
+        <div className={cn(styles.navMobileBG, isOpenBoolean && styles.navMobileBGOpen)}></div>
+        <button className={styles.navMobileBtnMenu} onClick={() => changeOpenState('open', setOpen)}>
+          <Hamburger toggled={isOpen === 'open'} size={25} />
+        </button>
+        <div className={cn(styles.navMobileMenu, isOpen && styles[isOpen])}>
+          <div className={styles.navMobileMenuHeader}>
+            <button className={styles.navMobileMenuBackBtn} onClick={() => changeOpenState('close', setOpen)}>
+              <SlArrowLeft size={15} />
+            </button>
+            <span>{defaultNavItems.title}</span>
+          </div>
+          <ul className={styles.navMobileList}>
+            {defaultNavItems.links.map(({ id, href: mainHref, name, sublist }) => {
+              if (!sublist) {
+                return <li key={id} className={styles.navMobileListItem} onClick={() => changeOpenState('close', setOpen)}>
+                  <Link href={mainHref}>{name}</Link>
+                </li>
+              }
+              return <li key={id} className={styles.navMobileListItem}>
+                <button onClick={() => openNavSub({ title: name, links: sublist })}>
+                  {name} <SlArrowRight size={10} />
+                </button>
               </li>
-            }
-            return <li key={id} className={styles.navMobileListItem}>
-              <button onClick={() => openNavSub({ title: name, links: sublist })}>
-                {name} <SlArrowRight size={10} />
-              </button>
-            </li>
-          })}
-        </ul>
-      </div>
-      <MobileNavSub />
-    </nav>
+            })}
+          </ul>
+        </div>
+        <MobileNavSub />
+      </nav>
+    </MobileView>
   )
 }

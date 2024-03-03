@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { FC, useEffect, useRef, useState } from 'react';
+import { BrowserView, MobileView } from 'react-device-detect';
 import styles from './Banner.module.scss';
 
 export const BannerItem: FC<IBanner & { pos?: 'last' | 'first' | false }> = ({ header, desc, image, headerType, type, href, pos }) => {
@@ -23,10 +24,9 @@ type IBannerItemPreviewProps = Omit<IBanner, 'desc' | 'id'> & { pos?: 'last' | '
 const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, pos }) => {
 
   const [isAutoScroll, setIsAutoScroll] = useState<boolean>(true)
-
-  const windowWidth = window.innerWidth
-
   const screenRef = useRef<any>(null)
+
+
 
   useEffect(() => {
 
@@ -47,12 +47,12 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
   if (type === 'mobile') {
     return (
       <div className={styles.itemImageMobile}>
+
         <div
           style={{ cursor: `url('/scroll-cursor.svg'), auto` }}
           ref={screenRef}
           className={styles.itemImageScreenMobile}
           onMouseEnter={() => setIsAutoScroll(false)}
-          onMouseLeave={windowWidth > 1023 ? () => setIsAutoScroll(true) : undefined}
         >
           <Image src={image} alt={header}
             width={0}
@@ -73,20 +73,20 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
     )
   }
 
-  if ((type === 'laptop-right' || type === 'laptop-left') && windowWidth <= 767) {
+  if ((type === 'laptop-right' || type === 'laptop-left')) {
     const isRigth = type === 'laptop-right'
     const margin = isRigth ? { marginRight: '272px' } : { marginLeft: '272px' }
     const position = isRigth ? { left: '50%' } : { right: '50%' }
 
-    if (pos === 'last' || pos === 'first') {
-      return (
-        <div className={styles.itemImageMobileLaptop} style={position}>
+
+    return (
+      <>
+        <BrowserView className={styles.itemImage}>
           <div
             style={{ cursor: `url('/scroll-cursor.svg'), auto` }}
             ref={screenRef}
-            className={styles.itemImageScreenMobileLaptopSingle}
+            className={styles.itemImageScreen}
             onMouseEnter={() => setIsAutoScroll(false)}
-            onMouseLeave={windowWidth > 1023 ? () => setIsAutoScroll(true) : undefined}
           >
             <Image src={image} alt={header}
               width={0}
@@ -95,74 +95,69 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
               style={{ width: '100%', height: 'auto' }}
             />
           </div>
-
           <Image src={`/laptop.png`} alt={header}
-            className={styles.itemImageDeviceMobileLaptop}
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: '100%' }}
-          />
-        </div>
-      )
-    }
-
-    return (
-      <div className={styles.itemImageMobileLaptop} style={position}>
-        <div
-          style={{
-            cursor: `url('/scroll-cursor.svg'), auto`,
-            ...margin
-          }}
-          ref={screenRef}
-          className={styles.itemImageScreenMobileLaptop}
-          onMouseEnter={() => setIsAutoScroll(false)}
-          onMouseLeave={windowWidth > 1023 ? () => setIsAutoScroll(true) : undefined}
-        >
-          <Image src={image} alt={header}
+            className={styles.itemImageLaptop}
             width={0}
             height={0}
             sizes="100vw"
             style={{ width: '100%', height: 'auto' }}
           />
-        </div>
+        </BrowserView>
+        <MobileView className={styles.itemImageMobileLaptop} style={position}>
+          {(pos === 'last' || pos === 'first') ?
+            <>
+              <div
+                style={{ cursor: `url('/scroll-cursor.svg'), auto` }}
+                ref={screenRef}
+                className={styles.itemImageScreenMobileLaptopSingle}
+                onMouseEnter={() => setIsAutoScroll(false)}
+              >
+                <Image src={image} alt={header}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: '100%', height: 'auto' }}
+                />
+              </div>
 
-        <Image src={`/laptop.png`} alt={header}
-          className={styles.itemImageDeviceMobileLaptop}
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: '100%' }}
-        />
-      </div>
+              <Image src={`/laptop.png`} alt={header}
+                className={styles.itemImageDeviceMobileLaptop}
+                width={0}
+                height={0}
+                sizes="100vw"
+                style={{ width: '100%' }}
+              />
+            </>
+            :
+            <>
+              <div
+                style={{
+                  cursor: `url('/scroll-cursor.svg'), auto`,
+                  ...margin
+                }}
+                ref={screenRef}
+                className={styles.itemImageScreenMobileLaptop}
+                onMouseEnter={() => setIsAutoScroll(false)}
+              >
+                <Image src={image} alt={header}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: '100%', height: 'auto' }}
+                />
+              </div>
+
+              <Image src={`/laptop.png`} alt={header}
+                className={styles.itemImageDeviceMobileLaptop}
+                width={0}
+                height={0}
+                sizes="100vw"
+                style={{ width: '100%' }}
+              />
+            </>
+          }
+        </MobileView>
+      </>
     )
   }
-
-
-
-  return (
-    <div className={styles.itemImage}>
-      <div
-        style={{ cursor: `url('/scroll-cursor.svg'), auto` }}
-        ref={screenRef}
-        className={styles.itemImageScreen}
-        onMouseEnter={() => setIsAutoScroll(false)}
-        onMouseLeave={windowWidth > 1023 ? () => setIsAutoScroll(true) : undefined}
-      >
-        <Image src={image} alt={header}
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: '100%', height: 'auto' }}
-        />
-      </div>
-      <Image src={`/laptop.png`} alt={header}
-        className={styles.itemImageLaptop}
-        width={0}
-        height={0}
-        sizes="100vw"
-        style={{ width: '100%', height: 'auto' }}
-      />
-    </div>
-  )
 }

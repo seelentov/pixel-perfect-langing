@@ -20,8 +20,8 @@ export const Stages: FC<IStagesProps> = ({ data, header }) => {
         <h2 className='text-header'>{header}</h2>
         <div className={styles.list}>
           {data.map((advantage, index) =>
-            <div onClick={() => setActive(index)} className={cn(styles.item, index === active && styles.itemActive)} style={{ marginLeft: `${(7 * index)}%` }}>
-              <StagesItem key={advantage.id} {...{ ...advantage }} />
+            <div key={advantage.id} onClick={() => setActive(index)} className={cn(styles.item, index === active && styles.itemActive)} style={{ marginLeft: `${(7 * index)}%` }}>
+              <StagesItem  {...{ ...advantage }} />
             </div>
           )}
         </div>
