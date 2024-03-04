@@ -16,6 +16,8 @@ export default async function HomePage() {
 
   return (
     <>
+    <p>OK!</p>
+    <p>OK!</p>
       {/*<Banner data={bannerData} />
       <hr className="hr" />
       <FAQ header={'Частые вопросы'} data={faqData} />
