@@ -1,7 +1,15 @@
-import { nativeDevListing } from "@/data/native-dev/native-dev.listing";
-import { webDevListing } from "@/data/web-dev/web-dev.listing";
+type MenuLink = {
+  id: number,
+  href: string,
+  name: string,
+  sublist?: MenuLink[]
+}
 
-export const ROUTING = {
+type ROUTING = {
+  menuLinks: MenuLink[]
+}
+
+export const ROUTING: ROUTING = {
   menuLinks: [
     {
       id: 1,
@@ -12,25 +20,11 @@ export const ROUTING = {
       id: 3,
       href: '/native-dev',
       name: 'Разработка приложений',
-      sublist: nativeDevListing.map(({ href, name, id }) => {
-        return {
-          id,
-          href,
-          name
-        }
-      })
     },
     {
       id: 4,
       href: '/web-dev',
       name: 'Разработка сайтов',
-      sublist: webDevListing.map(({ href, name, id }) => {
-        return {
-          id,
-          href,
-          name
-        }
-      })
     },
     {
       id: 5,

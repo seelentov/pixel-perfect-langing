@@ -12,7 +12,7 @@ export const DesktopNav = () => {
     <BrowserView>
       <nav className={styles.navDesktop}>
         <ul className={styles.navDesktopList}>
-          {ROUTING.menuLinks.map(({ id, href: mainHref, name, sublist }) =>
+          {ROUTING.menuLinks.map(({ id, href: mainHref, name, sublist}) =>
             <li key={id} className={styles.navDesktopListItem}>
               <Link href={mainHref}>{name}</Link>
               {
