@@ -1,10 +1,7 @@
 import { Banner } from "@/components/Banner/Banner";
 import { FAQ } from "@/components/FAQ/FAQ";
 import { Stages } from "@/components/Stages/Stages";
-import { LoaderBig } from "@/components/UI/LoaderBig/LoaderBig";
 import { API_URL } from "@/core/config/api.config";
-import { testAdvantages } from "@/data/advantages/advantages.1";
-import { testAdvantages2 } from "@/data/advantages/advantages.2";
 
 export default async function HomePage() {
 
