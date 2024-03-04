@@ -1,25 +1,35 @@
 'use client'
 
+import { API_URL } from '@/core/config/api.config';
 import Image from 'next/image';
 import { FC, useEffect, useRef, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import styles from './Banner.module.scss';
 
-export const BannerItem: FC<IBanner & { pos?: 'last' | 'first' | false }> = ({ header, desc, image, headerType, type, href, pos }) => {
+
+export const BannerItem: FC<IBanner & { pos?: 'last' | 'first' | false }> = ({ attributes, pos }) => {
   return (
     <div className={styles.container}>
       <div className={styles.item}>
         <div className={styles.itemText}>
-          {headerType === 'h1' ? <h1 className='text-header'>{header}</h1> : <h2 className='text-header'>{header}</h2>}
-          <p>{desc}</p>
+          {attributes.headerType === 'h1' ? <h1 className='text-header'>{attributes.header}</h1> : <h2 className='text-header'>{attributes.header}</h2>}
+          <div dangerouslySetInnerHTML={{ __html: attributes.description }}></div>
         </div>
-        <BannerItemPreview {...{ image, header, type, href, pos }} />
+        <BannerItemPreview
+          image={API_URL + attributes.image.data.attributes.url}
+          header={attributes.header}
+          type={attributes.type}
+          pos={pos} />
       </div>
     </div>
   );
 }
 
-type IBannerItemPreviewProps = Omit<IBanner, 'desc' | 'id'> & { pos?: 'last' | 'first' | false }
+type IBannerItemPreviewProps = {
+  header: string
+  image: string
+  type: 'laptopLeft' | 'mobile' | 'laptopRight'
+} & { pos?: 'last' | 'first' | false }
 
 const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, pos }) => {
 
@@ -47,14 +57,13 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
   if (type === 'mobile') {
     return (
       <div className={styles.itemImageMobile}>
-
         <div
           style={{ cursor: `url('/scroll-cursor.svg'), auto` }}
           ref={screenRef}
           className={styles.itemImageScreenMobile}
           onMouseEnter={() => setIsAutoScroll(false)}
         >
-          <Image src={image} alt={header}
+          <img src={image} alt={header}
             width={0}
             height={0}
             sizes="100vw"
@@ -73,8 +82,8 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
     )
   }
 
-  if ((type === 'laptop-right' || type === 'laptop-left')) {
-    const isRigth = type === 'laptop-right'
+  if ((type === 'laptopRight' || type === 'laptopLeft')) {
+    const isRigth = type === 'laptopRight'
     const margin = isRigth ? { marginRight: '272px' } : { marginLeft: '272px' }
     const position = isRigth ? { left: '50%' } : { right: '50%' }
 

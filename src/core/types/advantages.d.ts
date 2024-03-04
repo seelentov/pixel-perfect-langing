@@ -1,5 +1,7 @@
 interface IAdvantages {
   id: string,
-  title: string,
-  text: string
+  attributes: {
+    header: string,
+    description: string
+  },
 }

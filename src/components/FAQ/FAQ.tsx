@@ -1,7 +1,7 @@
 'use client'
 
 import { FC, useEffect, useRef, useState } from 'react';
-import { BrowserView, MobileView, isMobile } from "react-device-detect";
+import { BrowserView, MobileView } from "react-device-detect";
 import styles from './FAQ.module.scss';
 
 export interface IFAQProps {
@@ -37,7 +37,9 @@ export const FAQ: FC<IFAQProps> = ({ data, header }) => {
             <div className={styles.wrapper}>
               <div className={styles.answers} >
                 <ul className={styles.answersWrapper} ref={answerRef}>
-                  {data.map((item) => <li key={item.id} className={styles.answersItem}>{item.text}</li>)}
+                  {data.map((item) => <li key={item.id} className={styles.answersItem}>
+                    <div dangerouslySetInnerHTML={{ __html: item.attributes.description }} className={styles.answersItem}></div>
+                  </li>)}
                 </ul>
               </div>
               <div className={styles.first}>
@@ -46,7 +48,9 @@ export const FAQ: FC<IFAQProps> = ({ data, header }) => {
                     <span style={{ top: questionsLineTop }}></span>
                   </div>
                   <ul className={styles.questionsText}>
-                    {data.map((item, index) => <li onMouseEnter={() => setThisFaq(index + 1)} key={item.id} className={styles.questionsTextItem}>{item.title}</li>)}
+                    {data.map((item, index) => <li onMouseEnter={() => setThisFaq(index + 1)} key={item.id} className={styles.questionsTextItem}>
+                      {item.attributes.header}
+                    </li>)}
                   </ul>
                 </div>
               </div>
@@ -96,13 +100,15 @@ const FAQMobile: FC<IFAQProps> = ({ data, header }) => {
             <div className={styles.answersWrapper} ref={answerRef}>
               <div className={styles.answersHeader}>
                 <ul>
-                  {data.map((item, index) => <li key={item.id} onClick={() => setThisFaq(index + 1)}>{item.title}</li>)}
+                  {data.map((item, index) => <li key={item.id} onClick={() => setThisFaq(index + 1)}>{item.attributes.header}</li>)}
                 </ul>
               </div>
               {data.map((item) => <article key={item.id} className={styles.answersItem}>
                 <button onClick={() => setThisFaq(null)}>Назад</button>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
+                <h3>{item.attributes.header}</h3>
+                <div dangerouslySetInnerHTML={{ __html: item.attributes.description }}>
+                </div>
+                
               </article>)}
             </div>
           </div>
