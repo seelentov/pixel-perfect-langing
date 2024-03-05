@@ -3,9 +3,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '4747',
+        protocol: 'https',
+        hostname: 'pixellperfect.ru',
+        port: '',
+        pathname: '/uploads/**'
       },
     ],
   },

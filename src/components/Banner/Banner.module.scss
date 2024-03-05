@@ -50,6 +50,12 @@
 .itemText {
   width: 50%;
 
+  p {
+    max-height: 130px;
+    height: 130px;
+    min-height: 130px;
+  }
+
   @media (min-width: 1024px) {
 
     h1,
@@ -110,12 +116,13 @@
   }
 
   @media (max-width: 767px) {
-    top: -47px;
+    top: -116px;
+    scale: 0.8;
   }
 }
 
 .itemImageMobileLaptop {
-  top: -86px;
+  top: -169px;
   position: relative;
   width: 50%;
   display: flex;

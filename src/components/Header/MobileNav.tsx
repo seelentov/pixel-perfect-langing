@@ -107,6 +107,8 @@ export const MobileNav = () => {
   }
 
   return (
+
+
     <MobileView>
       <nav className={styles.navMobile}>
         <div className={cn(styles.navMobileBG, isOpenBoolean && styles.navMobileBGOpen)}></div>

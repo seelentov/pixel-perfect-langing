@@ -38,7 +38,7 @@ export const FAQ: FC<IFAQProps> = ({ data, header }) => {
               <div className={styles.answers} >
                 <ul className={styles.answersWrapper} ref={answerRef}>
                   {data.map((item) => <li key={item.id} className={styles.answersItem}>
-                    <div dangerouslySetInnerHTML={{ __html: item.attributes.description }} className={styles.answersItem}></div>
+                    {item.description}
                   </li>)}
                 </ul>
               </div>
@@ -49,7 +49,7 @@ export const FAQ: FC<IFAQProps> = ({ data, header }) => {
                   </div>
                   <ul className={styles.questionsText}>
                     {data.map((item, index) => <li onMouseEnter={() => setThisFaq(index + 1)} key={item.id} className={styles.questionsTextItem}>
-                      {item.attributes.header}
+                      {item.header}
                     </li>)}
                   </ul>
                 </div>
@@ -100,15 +100,13 @@ const FAQMobile: FC<IFAQProps> = ({ data, header }) => {
             <div className={styles.answersWrapper} ref={answerRef}>
               <div className={styles.answersHeader}>
                 <ul>
-                  {data.map((item, index) => <li key={item.id} onClick={() => setThisFaq(index + 1)}>{item.attributes.header}</li>)}
+                  {data.map((item, index) => <li key={item.id} onClick={() => setThisFaq(index + 1)}>{item.header}</li>)}
                 </ul>
               </div>
               {data.map((item) => <article key={item.id} className={styles.answersItem}>
                 <button onClick={() => setThisFaq(null)}>Назад</button>
-                <h3>{item.attributes.header}</h3>
-                <div dangerouslySetInnerHTML={{ __html: item.attributes.description }}>
-                </div>
-                
+                <h3>{item.header}</h3>
+                <p>{item.description}</p>
               </article>)}
             </div>
           </div>

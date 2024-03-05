@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
 
-export const StagesItem: FC<IAdvantages> = ({ attributes }) => {
+export const StagesItem: FC<IAdvantages> = ({ header, description }) => {
   return (
     <>
-      <h3>{attributes.header}</h3>
-      <div dangerouslySetInnerHTML={{ __html: attributes.description }}></div>
+      <h3>{header}</h3>
+      <p>{description}</p>
     </>
   );
 }

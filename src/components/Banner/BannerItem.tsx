@@ -1,24 +1,24 @@
 'use client'
 
-import { API_URL } from '@/core/config/api.config';
+import { getImageFromApiObject } from '@/core/utils/api/getImageFromApiObject';
 import Image from 'next/image';
 import { FC, useEffect, useRef, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import styles from './Banner.module.scss';
 
 
-export const BannerItem: FC<IBanner & { pos?: 'last' | 'first' | false }> = ({ attributes, pos }) => {
+export const BannerItem: FC<IBanner & { pos?: 'last' | 'first' | false }> = ({ header, headerType, pos, description, image, type, href }) => {
   return (
     <div className={styles.container}>
       <div className={styles.item}>
         <div className={styles.itemText}>
-          {attributes.headerType === 'h1' ? <h1 className='text-header'>{attributes.header}</h1> : <h2 className='text-header'>{attributes.header}</h2>}
-          <div dangerouslySetInnerHTML={{ __html: attributes.description }}></div>
+          {headerType === 'h1' ? <h1 className='text-header'>{header}</h1> : <h2 className='text-header'>{header}</h2>}
+          <p>{description}</p>
         </div>
         <BannerItemPreview
-          image={API_URL + attributes.image.data.attributes.url}
-          header={attributes.header}
-          type={attributes.type}
+          image={getImageFromApiObject(image)}
+          header={header}
+          type={type}
           pos={pos} />
       </div>
     </div>
@@ -63,7 +63,8 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
           className={styles.itemImageScreenMobile}
           onMouseEnter={() => setIsAutoScroll(false)}
         >
-          <img src={image} alt={header}
+          <Image src={image} alt={header}
+          priority
             width={0}
             height={0}
             sizes="100vw"
@@ -72,6 +73,7 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
         </div>
 
         <Image src={`/mobile.png`} alt={header}
+        priority
           className={styles.itemImageDeviceMobile}
           width={0}
           height={0}
@@ -98,6 +100,7 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
             onMouseEnter={() => setIsAutoScroll(false)}
           >
             <Image src={image} alt={header}
+            priority
               width={0}
               height={0}
               sizes="100vw"
@@ -105,6 +108,7 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
             />
           </div>
           <Image src={`/laptop.png`} alt={header}
+          priority
             className={styles.itemImageLaptop}
             width={0}
             height={0}
@@ -122,6 +126,7 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
                 onMouseEnter={() => setIsAutoScroll(false)}
               >
                 <Image src={image} alt={header}
+                priority
                   width={0}
                   height={0}
                   sizes="100vw"
@@ -130,6 +135,7 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
               </div>
 
               <Image src={`/laptop.png`} alt={header}
+              priority
                 className={styles.itemImageDeviceMobileLaptop}
                 width={0}
                 height={0}
@@ -149,6 +155,7 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
                 onMouseEnter={() => setIsAutoScroll(false)}
               >
                 <Image src={image} alt={header}
+                priority
                   width={0}
                   height={0}
                   sizes="100vw"
@@ -157,6 +164,7 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
               </div>
 
               <Image src={`/laptop.png`} alt={header}
+              priority
                 className={styles.itemImageDeviceMobileLaptop}
                 width={0}
                 height={0}

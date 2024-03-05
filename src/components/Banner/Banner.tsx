@@ -14,6 +14,8 @@ export interface IBannerProps {
 }
 
 export const Banner: FC<IBannerProps> = ({ data }) => {
+  if(!data) return
+
   return (
     <section className={styles.main}>
       <Swiper

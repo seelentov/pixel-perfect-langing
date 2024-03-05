@@ -1,31 +1,24 @@
 import { Banner } from "@/components/Banner/Banner";
 import { FAQ } from "@/components/FAQ/FAQ";
 import { Stages } from "@/components/Stages/Stages";
-import { API_URL } from "@/core/config/api.config";
+import { baseFetch } from "@/core/api/baseFetch";
 
 export default async function HomePage() {
 
-  //const bannerRes = await fetch(API_URL + '/api/banners/?populate=image')
-  //const { data: bannerData } = await bannerRes.json()
-
-  //const faqRes = await fetch(API_URL + '/api/questions')
-  //const { data: faqData } = await faqRes.json()
-
-  //const stagesRes = await fetch(API_URL + '/api/stages')
-  //const { data: stagesData } = await stagesRes.json()
+  const bannerData = await baseFetch('/api/banners/?populate=image')
+  const faqData = await baseFetch('/api/questions')
+  const stagesData = await baseFetch('/api/stages')
 
   return (
     <>
-    <p>OK!</p>
-    <p>OK!</p>
-      {/*<Banner data={bannerData} />
+      <Banner data={bannerData} />
       <hr className="hr" />
       <FAQ header={'Частые вопросы'} data={faqData} />
-      <hr className="hr" />*/}
+      <hr className="hr" />
       {/*<Catalog header={'Каталог услуг'} data={} />*/}
-      {/*<hr className="hr" />
+      <hr className="hr" />
       <Stages data={stagesData} header={'Как оформить заказ?'} />
-      <hr className="hr" />*/}
+      <hr className="hr" />
     </>
   );
 }
