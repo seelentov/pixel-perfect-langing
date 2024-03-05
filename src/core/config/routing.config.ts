@@ -13,41 +13,36 @@ export const ROUTING: ROUTING = {
   menuLinks: [
     {
       id: 1,
-      href: '/',
-      name: 'Главная'
-    },
-    {
-      id: 3,
       href: '/native-dev',
       name: 'Разработка приложений',
     },
     {
-      id: 4,
+      id: 2,
       href: '/web-dev',
       name: 'Разработка сайтов',
     },
     {
-      id: 5,
+      id: 3,
       href: '/services',
       name: 'Услуги'
     },
     {
-      id: 7,
+      id: 4,
       href: '/portfolio',
       name: 'Примеры работ'
     },
     {
-      id: 6,
+      id: 5,
       href: '/support',
       name: 'Поддержка'
     },
     {
-      id: 2,
+      id: 6,
       href: '/about',
       name: 'Обо мне'
     },
     {
-      id: 8,
+      id: 7,
       href: '/contacts',
       name: 'Контакты'
     },

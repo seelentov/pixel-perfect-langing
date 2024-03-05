@@ -5,10 +5,10 @@ import { apiDataSerializer } from "../utils/api/apiDataSerializer"
 
 // IMAGE_URLS: .data.attributes.url
 
-export const baseFetch = async (url: string) => {
+export const baseFetch = async (url: string, cache:boolean = false) => {
   try {
     const res = await fetch(API_URL + url, {
-      cache: 'no-store',
+      cache: cache ? 'force-cache' : 'no-store',
       headers: {
         'Authorization': 'Bearer ' + API_TOKEN,
       }

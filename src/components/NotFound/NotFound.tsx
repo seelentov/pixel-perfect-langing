@@ -12,11 +12,11 @@ export const NotFound: FC<INotFoundProps> = () => {
     <div className={styles.main}>
       <h2>404</h2>
       <p>Not Found</p>
-      <Link href="/">
+      <a href="/">
         <Button>
           На главную
         </Button>
-      </Link>
+      </a>
     </div>
   );
 }

@@ -90,6 +90,9 @@ export const MobileNav = () => {
           <span>{navItems && navItems.title}</span>
         </div>
         <ul className={styles.navMobileList}>
+          <li className={styles.navMobileListItem} onClick={() => closeAll()}>
+            <a href={'/'}>Главная</a>
+          </li>
           {navItems && navItems.links.map(({ id, href: mainHref, name }) =>
             <li key={id} className={styles.navMobileListItem} onClick={() => closeAll()}>
               <Link href={mainHref}>{name}</Link>
