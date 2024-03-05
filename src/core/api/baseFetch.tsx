@@ -8,6 +8,7 @@ import { apiDataSerializer } from "../utils/api/apiDataSerializer"
 export const baseFetch = async (url: string) => {
   try {
     const res = await fetch(API_URL + url, {
+      cache: 'no-store',
       headers: {
         'Authorization': 'Bearer ' + API_TOKEN,
       }
