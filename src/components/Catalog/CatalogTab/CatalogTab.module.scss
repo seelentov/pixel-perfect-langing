@@ -1,0 +1,13 @@
+.main{
+  max-height: 340px;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  &::-webkit-scrollbar{
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    background: var(--color_sec-3);
+  }
+}

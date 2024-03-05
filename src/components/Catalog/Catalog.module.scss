@@ -1,0 +1,132 @@
+.main {
+  padding: 106px 0;
+
+  @media (max-width: 1023px) {
+    padding: 60px 0;
+  }
+}
+
+.wrapper {
+  border: 3px var(--color_sec-1) solid;
+  border-radius: 15px;
+  background-color: var(--color_sec-4);
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+
+  /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tab {
+  text-wrap: nowrap;
+  display: grid;
+  align-items: center;
+  padding: 0 20px;
+  color: var(--color_background);
+  background-color: var(--color_sec-1);
+  border-radius: 16px 16px 0 0;
+  min-height: 30px;
+  transition: all .2s ease-in-out;
+
+  &.active {
+    background-color: var(--color_sec-3);
+    cursor: default;
+    animation-name: none;
+
+    &:hover {
+      translate: 0 0;
+    }
+
+  }
+
+  &:hover {
+    translate: 0 2px;
+  }
+
+  user-select: none;
+
+  cursor: pointer;
+  animation-name: blink;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+
+  &:nth-child(1) {
+    border-radius: 0 16px 0 0;
+
+  }
+}
+
+
+@keyframes blink {
+  0% {
+    background-color: var(--color_sec-1);
+  }
+
+  50% {
+    background-color: #7e7d7d;
+  }
+
+  100% {
+    background-color: var(--color_sec-1);
+  }
+}
+
+.top {
+  display: flex;
+  border-bottom: 3px var(--color_sec-1) solid;
+}
+
+.controll {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100%;
+  width: 86px;
+  background-color: var(--color_sec-1);
+  padding: 0 15px;
+
+  span {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+
+    &:nth-child(1) {
+      background: #e2574c;
+    }
+
+    &:nth-child(2) {
+      background: #efc75e;
+
+    }
+
+    &:nth-child(3) {
+      background: #3db39e;
+    }
+  }
+}
+
+
+.tabName{
+  padding: 7px 10px;
+  background-color: var(--color_sec-1);
+
+  h3{
+    text-wrap: nowrap;
+    width: 100%;
+    background-color: var(--color_background);
+    color: var(--color_sec-4);
+    border-radius: 15px;
+    padding: 0 20px;
+    font-size: 14px;
+  }
+}
