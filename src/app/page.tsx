@@ -15,20 +15,21 @@ export default async function HomePage() {
   const servicesData = await baseFetch('/api/services?filters[section]=service&populate=icon')
 
   const catalogSerializedData = {
-    'Разработка cайтов':webDevData,
+    'Разработка cайтов': webDevData,
     'Разработка приложений': mobileDevData,
-    'Услуги':servicesData
+    'Услуги': servicesData
   }
 
   return (
     <>
-      <Banner data={bannerData} />
+      {bannerData && <Banner data={bannerData} />}
       <hr className="hr" />
-      <FAQ header={'Частые вопросы'} data={faqData} />
+      {catalogSerializedData &&<Catalog header={'Каталог услуг'} data={catalogSerializedData} />}
       <hr className="hr" />
-      <Catalog header={'Каталог услуг'} data={catalogSerializedData}/>
+      {stagesData &&<Stages data={stagesData} header={'Как оформить заказ?'} />}
       <hr className="hr" />
-      <Stages data={stagesData} header={'Как оформить заказ?'} />
+      <hr className="hr" />
+      {faqData &&<FAQ header={'Частые вопросы'} data={faqData} />}
       <hr className="hr" />
     </>
   );

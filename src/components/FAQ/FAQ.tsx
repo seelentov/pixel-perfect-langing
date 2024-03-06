@@ -10,6 +10,8 @@ export interface IFAQProps {
 }
 
 export const FAQ: FC<IFAQProps> = ({ data, header }) => {
+
+
   const [thisFaq, setThisFaq] = useState<number>(1)
   const answerRef = useRef<any>(null)
 

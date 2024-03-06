@@ -142,6 +142,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+
 }
 
 .navDesktopListItem {
@@ -190,20 +195,21 @@
     animation-timing-function: ease-in-out;
   }
 
-  &:after{
+  &:after {
     content: "";
     position: absolute;
     top: -15px;
     width: 100%;
     height: 15px;
-    :hover{
+
+    :hover {
       display: flex;
       animation-duration: 0.5s;
       animation-name: show;
       animation-fill-mode: forwards;
       animation-timing-function: ease-in-out;
     }
-    
+
   }
 }
 

@@ -5,6 +5,8 @@ export const getImageFromApiObject = (imageData: any, format: 'full' | 'small' |
 
   const image = imageData.data.attributes
 
+  if(!image) return '/placeholder.svg'
+
   switch (format) {
     case 'full':
       return API_URL + image.url
