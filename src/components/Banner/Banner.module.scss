@@ -50,6 +50,12 @@
 .itemText {
   width: 50%;
 
+  h2 {
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   p {
     max-height: 130px;
     height: 130px;

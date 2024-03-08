@@ -10,13 +10,14 @@ import { CatalogTab } from './CatalogTab/CatalogTab';
 export interface ICatalogProps {
   data: { [key: string]: ICatalogItem[] }
   header: string
+  startTab?: number
 }
 
-export const Catalog: FC<ICatalogProps> = ({ header, data }) => {
+export const Catalog: FC<ICatalogProps> = ({ header, data, startTab = 1 }) => {
 
   const keys = Object.keys(data)
 
-  const [currentTabName, setCurrentTabName] = useState<string>(keys[0])
+  const [currentTabName, setCurrentTabName] = useState<string>(keys[startTab - 1])
   const [currentData, setCurrentData] = useState<ICatalogItem[]>(data[keys[0]])
 
 
@@ -37,21 +38,21 @@ export const Catalog: FC<ICatalogProps> = ({ header, data }) => {
               <span></span>
             </div>
             <ul className={styles.tabs}>
-              {keys?.map((tabName, index) => <li 
-              key={index} 
-              className={cn(styles.tab, tabName === currentTabName && styles.active)}
-              onClick={()=>switchTab(tabName)}>
+              {keys?.map((tabName, index) => <li
+                key={index}
+                className={cn(styles.tab, tabName === currentTabName && styles.active)}
+                onClick={() => switchTab(tabName)}>
                 {tabName}
-                </li>)}
+              </li>)}
             </ul>
           </div>
           <div className={styles.tabName}>
             <h3>
-              {"https://"+currentTabName.replace(' ', '_')}
+              {"https://" + currentTabName.replace(' ', '_')}
             </h3>
           </div>
           <div className={styles.items}>
-            <CatalogTab data={currentData}/>
+            <CatalogTab data={currentData} />
           </div>
         </div>
       </div>

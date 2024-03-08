@@ -6,7 +6,7 @@ import { BrowserView } from "react-device-detect";
 import styles from './Header.module.scss';
 
 
-export const DesktopNav = () => {
+export const DesktopNav = ({serviceLinks}:{serviceLinks: MenuLink[]}) => {
 
   return (
     <BrowserView>
@@ -17,16 +17,16 @@ export const DesktopNav = () => {
             <a href="/">Главная</a>
           </li>
 
-          {ROUTING.menuLinks.map(({ id, href: mainHref, name, sublist }) =>
+          {serviceLinks.concat(ROUTING.menuLinks).map(({ id, href: mainHref, name, sublist }) =>
             <li key={id} className={styles.navDesktopListItem}>
-              <Link href={mainHref}>{name}</Link>
+              <Link href={`/${mainHref}`}>{name}</Link>
               {
                 sublist &&
                 <ul className={styles.navDesktopSubList}>
                   {
                     sublist?.map(({ id, href, name }) =>
                       <li className={styles.navDesktopSubListItem} key={id}>
-                        <Link href={`${mainHref}/${href}`}>{name}</Link>
+                        <Link href={`/${mainHref}/${href}`}>{name}</Link>
                       </li>
                     )
                   }

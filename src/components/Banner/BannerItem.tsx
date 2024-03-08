@@ -64,7 +64,7 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
           onMouseEnter={() => setIsAutoScroll(false)}
         >
           <Image src={image} alt={header}
-          priority
+            priority
             width={0}
             height={0}
             sizes="100vw"
@@ -73,7 +73,7 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
         </div>
 
         <Image src={`/mobile.png`} alt={header}
-        priority
+          priority
           className={styles.itemImageDeviceMobile}
           width={0}
           height={0}
@@ -100,15 +100,15 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
             onMouseEnter={() => setIsAutoScroll(false)}
           >
             <Image src={image} alt={header}
-            priority
+              priority
               width={0}
               height={0}
               sizes="100vw"
               style={{ width: '100%', height: 'auto' }}
             />
           </div>
-          <Image src={`/laptop.png`} alt={header}
-          priority
+          <Image src={`/laptop-2.png`} alt={header}
+            priority
             className={styles.itemImageLaptop}
             width={0}
             height={0}
@@ -126,7 +126,7 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
                 onMouseEnter={() => setIsAutoScroll(false)}
               >
                 <Image src={image} alt={header}
-                priority
+                  priority
                   width={0}
                   height={0}
                   sizes="100vw"
@@ -134,8 +134,8 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
                 />
               </div>
 
-              <Image src={`/laptop.png`} alt={header}
-              priority
+              <Image src={`/laptop-2.png`} alt={header}
+                priority
                 className={styles.itemImageDeviceMobileLaptop}
                 width={0}
                 height={0}
@@ -155,7 +155,7 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
                 onMouseEnter={() => setIsAutoScroll(false)}
               >
                 <Image src={image} alt={header}
-                priority
+                  priority
                   width={0}
                   height={0}
                   sizes="100vw"
@@ -163,8 +163,8 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
                 />
               </div>
 
-              <Image src={`/laptop.png`} alt={header}
-              priority
+              <Image src={`/laptop-2.png`} alt={header}
+                priority
                 className={styles.itemImageDeviceMobileLaptop}
                 width={0}
                 height={0}

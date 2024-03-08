@@ -11,7 +11,7 @@ export interface IStagesProps {
 }
 
 export const Stages: FC<IStagesProps> = ({ data, header }) => {
-  
+
   const [active, setActive] = useState<null | number>(0)
 
   return (

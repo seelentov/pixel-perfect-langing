@@ -25,12 +25,14 @@ type NavItems = {
   links: MenuLinkParent[]
 }
 
-const defaultNavItems = {
-  title: 'Pixel Perfect',
-  links: ROUTING.menuLinks
-}
 
-export const MobileNav = () => {
+
+export const MobileNav = ({serviceLinks}:{serviceLinks: MenuLink[]}) => {
+
+  const defaultNavItems = {
+    title: 'Pixel Perfect',
+    links: serviceLinks.concat(ROUTING.menuLinks)
+  }
 
   const [isOpen, setOpen] = useState<string | null>(null)
   const isOpenBoolean = isOpen === 'navMobileMenuOpening' || isOpen === 'navMobileMenuOpen'
