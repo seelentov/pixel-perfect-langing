@@ -28,10 +28,10 @@ export default async function Category({ params }: ICategoryPage) {
     <>
       <div className='container content'>
         <h1>{category.header}</h1>
+        <div dangerouslySetInnerHTML={{__html: category.description}}></div>
         <Listing data={serializedServices} />
         <br />
         <br />
-        <div dangerouslySetInnerHTML={{__html: category.description}}></div>
       </div>
     </>
   );

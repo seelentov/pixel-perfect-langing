@@ -15,11 +15,13 @@
 
 .itemImageScreenMobile {
 
+  cursor: url('/scroll-cursor.svg'), auto;
+
   img {
     transition: all .2s ease-in-out;
   }
 
-  overflow: hidden;
+  overflow: scroll;
 
   position: absolute;
   z-index: 1;
@@ -63,6 +65,9 @@
 }
 
 .itemImageScreen {
+  cursor: url('/scroll-cursor.svg'), auto;
+
+  
   img {
     transition: all .2s ease-in-out;
   }
@@ -73,7 +78,7 @@
   width: 62.1%;
   left: 19.3%;
   top: 24.1%;
-  overflow: hidden;
+  overflow: scroll;
 
   &::-webkit-scrollbar {
     display: none;
@@ -81,47 +86,4 @@
 
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-
-.main {
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 1023px) {
-    gap: 20px;
-  }
-
-  @media (max-width: 767px) {
-    gap: 0px;
-    flex-direction: column;
-  }
-
-  @media (min-width: 1024px) {
-    &:hover {
-      .image {
-        min-width: 400px;
-      }
-    }
-  }
-}
-
-.text {
-
-  h2 {
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 25px;
-  }
-}
-
-.image {
-  transition: all .2s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 200px;
-  max-width: 200px;
-  min-height: 200px;
-  max-height: 200px;
 }
