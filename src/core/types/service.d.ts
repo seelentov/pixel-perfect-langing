@@ -1,6 +1,6 @@
 interface IService {
-  desktopExample: string
-  mobileExample: string
+  desktopExample: any
+  mobileExample: any
   id: number,
   header: string,
   textBottom: string

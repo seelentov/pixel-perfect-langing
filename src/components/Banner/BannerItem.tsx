@@ -2,12 +2,32 @@
 
 import { getImageFromApiObject } from '@/core/utils/api/getImageFromApiObject';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FC, useEffect, useRef, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import styles from './Banner.module.scss';
 
 
-export const BannerItem: FC<IBanner & { pos?: 'last' | 'first' | false }> = ({ header, headerType, pos, description, image, type, href }) => {
+export const BannerItem: FC<Omit<IBanner, 'id'> & { pos?: 'last' | 'first' | false }> = ({ header, headerType, pos, description, image, type, href }) => {
+  if (href) {
+    return (
+      <Link href={href}>
+        <div className={styles.container}>
+          <div className={styles.item}>
+            <div className={styles.itemText}>
+              {headerType === 'h1' ? <h1 className='text-header'>{header}</h1> : <h2 className='text-header'>{header}</h2>}
+              <p>{description}</p>
+            </div>
+            <BannerItemPreview
+              image={getImageFromApiObject(image)}
+              header={header}
+              type={type}
+              pos={pos} />
+          </div>
+        </div>
+      </Link>
+    );
+  }
   return (
     <div className={styles.container}>
       <div className={styles.item}>
@@ -23,6 +43,7 @@ export const BannerItem: FC<IBanner & { pos?: 'last' | 'first' | false }> = ({ h
       </div>
     </div>
   );
+
 }
 
 type IBannerItemPreviewProps = {

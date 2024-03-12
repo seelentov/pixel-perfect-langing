@@ -50,10 +50,15 @@
 .itemText {
   width: 50%;
 
+
   h2 {
-    text-wrap: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
+    @media (max-width: 1023px) {
+      text-wrap: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
   }
 
   p {
@@ -69,6 +74,8 @@
       font-size: 55px;
       line-height: 35px;
     }
+
+    
 
     p {
       font-size: 18px;

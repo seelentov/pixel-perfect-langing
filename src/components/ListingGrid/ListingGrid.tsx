@@ -1,15 +1,15 @@
-import { FC } from 'react'
-import styles from './ListingGrid.module.scss'
+import { FC } from 'react';
+import styles from './ListingGrid.module.scss';
 import { ListingGridItem } from './ListingGridItem/ListingGridItem';
 
 export interface IListingGridProps {
-data: IService[]
+  data: IPortfolio[]
 }
 
-export const ListingGrid: FC<IListingGridProps> = ({data}) => {
+export const ListingGrid: FC<IListingGridProps> = ({ data }) => {
   return (
     <div className={styles.main}>
-      {data.map(item => <ListingGridItem {...{...item}}/>)}
+      {data.map(item => <ListingGridItem key={item.id} {...{ ...item }} />)}
     </div>
   );
 }

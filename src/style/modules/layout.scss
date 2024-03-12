@@ -45,14 +45,27 @@
 //=======================================================================
 
 .content {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  width: 100%;
+  
+  padding-top: 60px;
+  padding-bottom: 60px;
 
   ul {
     list-style: initial;
     margin: initial;
     padding: 0 0 0 40px;
   }
+
+  ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+
 
   li {
     display: list-item;

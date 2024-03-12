@@ -1,16 +1,16 @@
 import { DevicePreview } from '@/components/DevicePreview/DevicePreview';
 import { getImageFromApiObject } from '@/core/utils/api/getImageFromApiObject';
 import { FC } from 'react';
-import styles from './ListingGridItem.module.scss';
+import styles from './PortfolioItem.module.scss';
 
-export interface IListingGridItemProps extends IPortfolio {
+export interface IPortfolioItemProps extends IPortfolio {
 
 }
 
-export const ListingGridItem: FC<IListingGridItemProps> = ({ header, href, exampleDesktop, exampleMobile }) => {
+export const PortfolioItem: FC<IPortfolioItemProps> = ({ exampleDesktop, exampleMobile, header, href }) => {
+
   const image = exampleDesktop.data ? exampleDesktop : exampleMobile
   const imageType = exampleDesktop.data ? 'desktop' : 'mobile'
-
 
 
   return (

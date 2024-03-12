@@ -9,7 +9,7 @@ export const baseFetch = async (url: string, single: boolean = false, cache: boo
   let serializedData
   const options: any = {}
 
-  if(!cache){
+  if (!cache) {
     options.cache = 'no-store'
   } else {
     options.next = { revalidate: 86400 }
@@ -24,11 +24,11 @@ export const baseFetch = async (url: string, single: boolean = false, cache: boo
     const res = await fetch(API_URL + url, options)
 
     const data = await res.json()
-    
+
 
     serializedData = apiDataSerializer(data)
 
-    if(single){
+    if (single) {
       return serializedData[0]
     }
 

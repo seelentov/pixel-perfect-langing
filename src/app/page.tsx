@@ -1,10 +1,36 @@
+import { Advantages } from "@/components/Advantages/Advantages";
 import { Banner } from "@/components/Banner/Banner";
+import { Call } from "@/components/Call/Call";
 import { Catalog } from "@/components/Catalog/Catalog";
 import { FAQ } from "@/components/FAQ/FAQ";
+import { Portfolio } from "@/components/Portfolio/Portfolio";
 import { Stages } from "@/components/Stages/Stages";
 import { baseFetch } from "@/core/api/baseFetch";
 import { getSerializedServices } from "@/core/api/getSerializedServices";
+import { API_URL } from "@/core/config/api.config";
 import { parseObjToQuerytsts } from "@/core/utils/api/parseObjToQuery";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Pixel Perfect",
+  description: "Разработка мобильных и веб приложений для вашей компании",
+  openGraph: {
+    title: 'Pixel Perfect',
+    description: 'Разработка мобильных и веб приложений для вашей компании',
+    url: API_URL,
+    siteName: 'Pixel Perfect',
+    images: [
+      {
+        url: '/favicon.png',
+        width: 500,
+        height: 500,
+      },
+    ],
+    locale: 'ru',
+    type: 'website',
+  },
+};
+
 
 export default async function HomePage() {
 
@@ -16,17 +42,29 @@ export default async function HomePage() {
 
   const categoriesData = await getSerializedServices()
 
+  const portfolioData: IPortfolio[] = await baseFetch('/api/portfolios?' + parseObjToQuerytsts([
+    ['populate', 'exampleDesktop'],
+    ['populate', 'exampleMobile']
+  ]))
+
+  const advantagesData: IAdvantages[] = await baseFetch('/api/advantages?' + parseObjToQuerytsts([
+    ['populate', 'icon'],
+  ]))
+
   return (
     <>
       {bannerData && <Banner data={bannerData} />}
       <hr className="hr" />
+      {advantagesData && <Advantages advantages={advantagesData} />}
+      <hr className="hr" />
       {categoriesData && <Catalog header={'Каталог услуг'} data={categoriesData} />}
+      <hr className="hr" />
+      {portfolioData && <Portfolio data={portfolioData} />}
       <hr className="hr" />
       {stagesData && <Stages data={stagesData} header={'Как оформить заказ?'} />}
       <hr className="hr" />
-      <hr className="hr" />
       {faqData && <FAQ header={'Частые вопросы'} data={faqData} />}
-      <hr className="hr" />
+      <Call padding="none" />
     </>
   );
 }

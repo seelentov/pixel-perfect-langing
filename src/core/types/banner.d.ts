@@ -5,6 +5,6 @@ interface IBanner {
   description: string
   image: any
   type: 'laptopLeft' | 'mobile' | 'laptopRight'
-  href: string
+  href?: string
 
 }
