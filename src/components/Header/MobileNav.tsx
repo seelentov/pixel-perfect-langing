@@ -27,7 +27,7 @@ type NavItems = {
 
 
 
-export const MobileNav = ({serviceLinks}:{serviceLinks: MenuLink[]}) => {
+export const MobileNav = ({ serviceLinks }: { serviceLinks: MenuLink[] }) => {
 
   const defaultNavItems = {
     title: 'Pixel Perfect',
@@ -92,9 +92,6 @@ export const MobileNav = ({serviceLinks}:{serviceLinks: MenuLink[]}) => {
           <span>{navItems && navItems.title}</span>
         </div>
         <ul className={styles.navMobileList}>
-          <li className={styles.navMobileListItem} onClick={() => closeAll()}>
-            <a href={'/'}>Главная</a>
-          </li>
           {navItems && navItems.links.map(({ id, href: mainHref, name }) =>
             <li key={id} className={styles.navMobileListItem} onClick={() => closeAll()}>
               <Link href={mainHref}>{name}</Link>
@@ -128,6 +125,12 @@ export const MobileNav = ({serviceLinks}:{serviceLinks: MenuLink[]}) => {
             <span>{defaultNavItems.title}</span>
           </div>
           <ul className={styles.navMobileList}>
+
+            <li className={styles.navMobileListItem} onClick={() => changeOpenState('close', setOpen)}>
+              <a href={'/'}>Главная</a>
+            </li>
+
+
             {defaultNavItems.links.map(({ id, href: mainHref, name, sublist }) => {
               if (!sublist) {
                 return <li key={id} className={styles.navMobileListItem} onClick={() => changeOpenState('close', setOpen)}>
