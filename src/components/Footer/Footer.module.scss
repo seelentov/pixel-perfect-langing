@@ -12,10 +12,12 @@
 
   svg {
     transition: all .2s ease-in-out;
-    color: var(--color_background);
+    fill: var(--color_background);
+    stroke: var(--color_background);
 
     &:hover {
-      color: var(--color_sec-text);
+      fill: var(--color_sec-text);
+      stroke: var(--color_sec-text);
     }
   }
 

@@ -13,10 +13,12 @@
   }
 
   svg {
-    color: var(--color_main-text);
+    fill: var(--color_main-text);
+    stroke: var(--color_main-text);
 
     &:hover {
-      color: var(--color_sec-text);
+      fill: var(--color_sec-text);
+      stroke: var(--color_sec-text);
     }
   }
 
@@ -47,10 +49,13 @@
   }
 
   svg {
-    color: var(--color_background);
+    fill: var(--color_background);
+    stroke: var(--color_background);
 
     &:hover {
-      color: var(--color_sec-text);
+      fill: var(--color_sec-text);
+      stroke: var(--color_sec-text);
+      
     }
   }
 
@@ -102,7 +107,8 @@
   }
 
   & svg:hover {
-    color: var(--color_sec-text) !important;
+    fill: var(--color_sec-text) !important;
+    stroke: var(--color_sec-text) !important;
   }
 
   display: flex;

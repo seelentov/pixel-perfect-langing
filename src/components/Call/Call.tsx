@@ -1,13 +1,15 @@
-import { INFO } from '@/core/config/info.config';
+'use client'
+
 import { FC } from 'react';
-import { RiPhoneFill, RiTelegramFill, RiWhatsappFill } from 'react-icons/ri';
+import { YMClick } from '../YM/YMClick';
 import styles from './Call.module.scss';
+import { links } from './call.config';
 
 export interface ICallProps {
-padding?: 'top' | 'bottom' | 'both' | 'none'
+  padding?: 'top' | 'bottom' | 'both' | 'none'
 }
 
-export const Call: FC<ICallProps> = ({padding = 'both'}) => {
+export const Call: FC<ICallProps> = ({ padding = 'both' }) => {
 
   const paddingProp = {
     paddingTop: padding === 'top' || padding === 'both' ? '60px' : '0px',
@@ -16,19 +18,9 @@ export const Call: FC<ICallProps> = ({padding = 'both'}) => {
 
   return (
     <div className={styles.main} style={paddingProp}>
+
       <div className={styles.social}>
-        <a className={styles.socialItem} target='_blank' href={`https://wa.me/${INFO.PHONE}`}>
-          <RiWhatsappFill size={120} />
-          <p>wa.me/{INFO.PHONE}</p>
-        </a>
-        <a className={styles.socialItem} href={`https://t.me/${INFO.PHONE}`} target='_blank'>
-          <RiTelegramFill size={120} />
-          <p>t.me/{INFO.PHONE}</p>
-        </a>
-        <a className={styles.socialItem} href={`tel:${INFO.PHONE}`}>
-          <RiPhoneFill size={120} />
-          <p>{INFO.PHONE}</p>
-        </a>
+        {links.map((link, index) => <YMClick key={index} className={styles.socialItem} {...{ ...link }} />)}
       </div>
     </div>
   );

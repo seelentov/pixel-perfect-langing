@@ -5,6 +5,8 @@ import { RiPhoneFill, RiTelegramFill, RiWhatsappFill } from "react-icons/ri";
 import { DesktopNav } from './DesktopNav';
 import styles from './Header.module.scss';
 import { MobileNav } from './MobileNav';
+import { YMClick } from '../YM/YMClick';
+import { social_links } from './header.config';
 
 export interface IHeaderProps {
 
@@ -24,15 +26,7 @@ export const Header: FC<IHeaderProps> = async () => {
             <MobileNav serviceLinks={serviceLinks} />
           </div>
           <div className={styles.social}>
-            <a className={styles.socialItem} href={`tel:${INFO.PHONE}`}>
-              <RiPhoneFill size={17} />
-            </a>
-            <a className={styles.socialItem} target='_blank' href={`https://wa.me/${INFO.PHONE}`}>
-              <RiWhatsappFill size={17} />
-            </a>
-            <a className={styles.socialItem} target='_blank' href={`https://t.me/${INFO.PHONE}`}>
-              <RiTelegramFill size={17} />
-            </a>
+            {social_links.map((link, index) => <YMClick key={index} className={styles.socialItem} {...{ ...link }} />)}
           </div>
         </div>
       </div>

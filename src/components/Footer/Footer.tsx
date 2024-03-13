@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { FC } from 'react';
 import { RiPhoneFill, RiTelegramFill, RiWhatsappFill } from 'react-icons/ri';
 import styles from './Footer.module.scss';
+import { YMClick } from '../YM/YMClick';
+import { social_links } from './footer.config';
 
 
 
@@ -16,19 +18,8 @@ export const Footer: FC<IFooterProps> = () => {
       <div className="container">
         <div className={styles.wrapper}>
           <div className={styles.left}>
-            <address className={styles.address}>
-
-            </address>
             <div className={styles.social}>
-              <a className={styles.socialItem} href={`tel:${INFO.PHONE}`}>
-                <RiPhoneFill size={21} />
-              </a>
-              <a className={styles.socialItem} target='_blank' href={`https://wa.me/${INFO.PHONE}`}>
-                <RiWhatsappFill size={21} />
-              </a>
-              <a className={styles.socialItem} target='_blank' href={`https://t.me/${INFO.PHONE}`}>
-                <RiTelegramFill size={21} />
-              </a>
+              {social_links.map((link, index) => <YMClick key={index} className={styles.socialItem} {...{ ...link }} />)}
             </div>
           </div>
           <a className={styles.center} href="/">
@@ -42,7 +33,7 @@ export const Footer: FC<IFooterProps> = () => {
             />
           </a>
           <div className={styles.right}>
-            <div className={styles.legal}>
+            <address className={styles.legal}>
               <p>
                 Комков Владислав Владимирович
               </p>
@@ -54,7 +45,7 @@ export const Footer: FC<IFooterProps> = () => {
               <p>
                 ИНН: 745108164223
               </p>
-            </div>
+            </address>
             <p className={styles.copyright}>© 2024 Pixel Perfect. All rights reserved</p>
           </div>
         </div>
