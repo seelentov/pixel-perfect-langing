@@ -5,7 +5,9 @@ export const StagesItem: FC<IAdvantages> = ({ header, description }) => {
   return (
     <>
       <h3>{header}</h3>
-      <p>{description}</p>
+      <div dangerouslySetInnerHTML={{ __html: description }}>
+
+      </div>
     </>
   );
 }
