@@ -4,6 +4,7 @@ import { INFO } from "@/core/config/info.config";
 import { Metadata } from "next";
 import Image from 'next/image';
 import styles from './page.module.scss';
+import { Form } from "@/components/Form/Form";
 
 
 export const metadata: Metadata = {
@@ -45,6 +46,7 @@ export default async function Contacts() {
               <p><a href={`tel:${INFO.PHONE}`}>{INFO.PHONE}</a></p>
               <p>ИНН: 745108164223</p>
             </address>
+            <Form type="min"/>
           </div>
           <div className={styles.right}>
             <Image src={`/icon--black.svg`} alt={'Pixel Perfect'}
@@ -57,7 +59,7 @@ export default async function Contacts() {
           </div>
         </div>
       </div>
-      <Call padding='none' />
+      <Call padding='none' type="w/out-form"/>
     </div >
   );
 }

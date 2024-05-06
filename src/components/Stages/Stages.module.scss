@@ -4,6 +4,7 @@
   @media (max-width: 1023px) {
     padding: 60px 0;
   }
+  
 }
 
 .list {
@@ -45,6 +46,12 @@
 }
 
 .item {
+*{
+    box-sizing: content-box;
+
+  }
+    box-sizing: content-box;
+
   position: relative;
 
 

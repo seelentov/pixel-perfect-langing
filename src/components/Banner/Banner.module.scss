@@ -62,9 +62,9 @@
   }
 
   p {
-    max-height: 130px;
-    height: 130px;
-    min-height: 130px;
+    max-height: 126px;
+    height: 126px;
+    min-height: 126px;
   }
 
   @media (min-width: 1024px) {
@@ -78,6 +78,7 @@
     
 
     p {
+      
       font-size: 18px;
     }
   }
@@ -99,7 +100,11 @@
     h1,
     p {
       padding: 0 15px;
-
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;  
+  -webkit-line-clamp: 6;  
+  -webkit-box-orient: vertical;    
     }
 
     max-width: none !important;

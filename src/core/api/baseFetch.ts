@@ -21,11 +21,8 @@ export const baseFetch = async (url: string, single: boolean = false, cache: boo
 
 
   try {
-    const res = await fetch(API_URL + url, options)
-
+    const res = await fetch(API_URL + url)
     const data = await res.json()
-
-
     serializedData = apiDataSerializer(data)
 
     if (single) {

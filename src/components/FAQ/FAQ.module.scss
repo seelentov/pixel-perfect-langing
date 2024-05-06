@@ -9,7 +9,11 @@
 .wrapper {
   display: flex;
   justify-content: space-between;
+  *{
+    box-sizing: content-box;
 
+  }
+  box-sizing: content-box;
 
   @media (max-width: 1023px) {
     align-items: center;

@@ -151,6 +151,9 @@ input[type="reset"] {
 
 
 html {
+  *{
+    box-sizing: border-box;
+  }
   font-size: 18px;
 
   &::-webkit-scrollbar {

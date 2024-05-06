@@ -1,4 +1,10 @@
 .main{
+  *{
+    box-sizing: content-box;
+
+  }
+  box-sizing: content-box;
+
   max-height: 340px;
   overflow-y: scroll;
   display: flex;

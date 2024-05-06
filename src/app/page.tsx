@@ -3,6 +3,7 @@ import { Banner } from "@/components/Banner/Banner";
 import { Call } from "@/components/Call/Call";
 import { Catalog } from "@/components/Catalog/Catalog";
 import { FAQ } from "@/components/FAQ/FAQ";
+import { ModalForm } from "@/components/ModalForm/ModalForm";
 import { Portfolio } from "@/components/Portfolio/Portfolio";
 import { Stages } from "@/components/Stages/Stages";
 import { baseFetch } from "@/core/api/baseFetch";
@@ -65,6 +66,7 @@ export default async function HomePage() {
       <hr className="hr" />
       {faqData && <FAQ header={'Частые вопросы'} data={faqData} />}
       <Call padding="none" />
+      <ModalForm/>
     </>
   );
 }

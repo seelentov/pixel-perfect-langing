@@ -26,7 +26,7 @@ export const DesktopNav = ({serviceLinks}:{serviceLinks: MenuLink[]}) => {
                   {
                     sublist?.map(({ id, href, name }) =>
                       <li className={styles.navDesktopSubListItem} key={id}>
-                        <Link href={`/${mainHref}/${href}`}>{name}</Link>
+                        <Link href={`/${href}`}>{name}</Link>
                       </li>
                     )
                   }
