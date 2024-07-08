@@ -13,7 +13,7 @@ export const NotFound: FC<INotFoundProps> = () => {
       <h2>404</h2>
       <p>Not Found</p>
       <a href="/">
-        <Button>
+        <Button dubleText='На главную'>
           На главную
         </Button>
       </a>

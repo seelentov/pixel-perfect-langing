@@ -7,9 +7,10 @@ export interface IYMClickProps extends HTMLAttributes<HTMLDivElement> {
   target?: '_blank'
   link?: string
   child?: string
+  styleNest?: string
 }
 
-export const YMClick: FC<IYMClickProps> = ({ metrik_id, name, child = "", type = 'link', link = "/", target = "", ...rest }) => {
+export const YMClick: FC<IYMClickProps> = ({ metrik_id, name, child = "", type = 'link', link = "/", target = "", styleNest= "", ...rest }) => {
 
   if(type === 'button'){
     return (
@@ -28,6 +29,7 @@ export const YMClick: FC<IYMClickProps> = ({ metrik_id, name, child = "", type =
     <div {...rest} dangerouslySetInnerHTML={{
       __html: /*html */`<a 
       href="${link}" 
+      style="${styleNest}"
       onclick="ym(${metrik_id},'reachGoal','${name}')" ${target ? 'target="' + target + '"' : ''}>
       ${child}
       </a>`}}>

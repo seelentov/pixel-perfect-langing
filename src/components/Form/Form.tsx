@@ -6,6 +6,7 @@ import { Button } from '../UI/Button/Button';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import cn from 'classnames';
+import { YMClick } from '../YM/YMClick';
 interface IFormProps {
     type?: 'min' | 'default'
 }
@@ -57,8 +58,8 @@ export const Form = ({ type = 'default' }) => {
                 onChange={handleChange}
                 placeholder="Ваш номер телефона"
             />
-            <Button>
-                Отправить
+            <Button dubleText='Отправить'>
+            <YMClick child="Отправить" name="form_action" metrik_id={96723379} styleNest="display: inline"/>
             </Button>
         </form>
     )
