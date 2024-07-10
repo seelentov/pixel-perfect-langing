@@ -38,7 +38,7 @@ export const Form = ({ type = 'default' }) => {
     };
 
     return (
-        <form className={cn(styles.form, type === 'default' && styles.default)} onSubmit={handleSubmit}>
+        <form className={cn(styles.form, type === 'default' && styles.default) + " modal-form"} onSubmit={handleSubmit}>
             {type === 'default' &&
                 <>
                     <h2 className='text-header'>Закажите звонок</h2>

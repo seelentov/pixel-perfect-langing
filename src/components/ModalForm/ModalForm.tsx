@@ -29,7 +29,7 @@ export const ModalForm: FC<IModalFormProps> = () => {
 
     useEffect(() => {
         const handleDocumentClick = (e: any) => {
-            if (!e.target.closest(`.${styles.form}`)) {
+            if (!e.target.closest(`.modal-form`)) {
                 setIsOpen(false);
                 const html = document.querySelector('html');
                 if (html) {
