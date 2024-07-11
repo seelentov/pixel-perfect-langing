@@ -42,7 +42,7 @@ export const Form = ({ type = 'default' }) => {
             {type === 'default' &&
                 <>
                     <h2 className='text-header'>Закажите звонок</h2>
-                    <p>..и свяжусь с Вами в ближайшее время</p>
+                    <p>..и я свяжусь с Вами в ближайшее время</p>
                 </>}
             <input
                 type="text"

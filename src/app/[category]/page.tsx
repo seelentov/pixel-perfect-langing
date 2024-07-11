@@ -41,7 +41,6 @@ interface ICategoryPage {
   params: { category: string }
 }
 
-
 export default async function Category({ params }: ICategoryPage) {
 
   const category: ICategory = await getItemByFilter('categories', ['href'], params.category)

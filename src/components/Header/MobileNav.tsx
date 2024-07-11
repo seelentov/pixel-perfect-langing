@@ -94,7 +94,7 @@ export const MobileNav = ({ serviceLinks }: { serviceLinks: MenuLink[] }) => {
         <ul className={styles.navMobileList}>
           {navItems && navItems.links.map(({ id, href: mainHref, name }) =>
             <li key={id} className={styles.navMobileListItem} onClick={() => closeAll()}>
-              <Link href={mainHref}>{name}</Link>
+              <Link href={"/"+mainHref}>{name}</Link>
             </li>
           )}
         </ul>
