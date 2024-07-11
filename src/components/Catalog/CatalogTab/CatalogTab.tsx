@@ -6,7 +6,10 @@ export interface ICatalogTabProps {
   data: ICatalogItem[]
 }
 
+
+
 export const CatalogTab: FC<ICatalogTabProps> = ({ data }) => {
+
   return (
     <div className={styles.main}>
       {data.map(item => <CatalogItem key={item.id} {...{ ...item }} />)}

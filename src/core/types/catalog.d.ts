@@ -4,5 +4,10 @@ interface ICatalogItem {
   description: string
   href: string
   icon: any
-  section: string
+  category: {
+    data: {
+      id: number,
+      attributes: ICategory
+    }
+  }
 }

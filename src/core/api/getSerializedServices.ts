@@ -11,7 +11,7 @@ export const getSerializedServices = async () => {
 
 
   let promises = categoriesKeys.map(async (category: string) => {
-    const data = await getItemsByFilter('services', ['category', 'header'], category, [['populate','icon']]);
+    const data = await getItemsByFilter('services', ['category', 'header'], category, [['populate','icon'], ['populate','category']]);
     return [category, data];
   });
 
