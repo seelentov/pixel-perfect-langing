@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import Image from 'next/image';
 import styles from './page.module.scss';
 import { Form } from "@/components/Form/Form";
+import { HiddenData } from "@/components/UI/HiddenPhone/HiddenData";
 
 
 export const metadata: Metadata = {
@@ -43,7 +44,7 @@ export default async function Contacts() {
             <address>
               <p>Комков Владислав Владимирович</p>
               <p><a href="mailto:komkov222111@gmail.com">komkov222111@gmail.com</a></p>
-              <p><a href={`tel:${INFO.PHONE}`}>{INFO.PHONE}</a></p>
+              <p><HiddenData href={`tel:${INFO.PHONE}`} text={INFO.PHONE}/></p>
               <p>ИНН: 745108164223</p>
             </address>
             <Form type="min"/>
