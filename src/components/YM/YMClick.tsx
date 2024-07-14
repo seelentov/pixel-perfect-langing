@@ -12,12 +12,16 @@ export interface IYMClickProps extends HTMLAttributes<HTMLDivElement> {
 
 export const YMClick: FC<IYMClickProps> = ({ metrik_id, name, child = "", type = 'link', link = "/", target = "", styleNest= "", ...rest }) => {
 
+  const enabled = false
+
+  const onclickString = `ym(${metrik_id},'reachGoal','${name}')`;
+
   if(type === 'button'){
     return (
       <div {...rest} dangerouslySetInnerHTML={{
         __html: /*html */`<button 
         style="width: 100%; height: 100%"
-        onclick="ym(${metrik_id},'reachGoal','${name}')">
+        onclick="${enabled ? onclickString : ""}">
         ${child}
         </button>`}}>
       </div>
@@ -30,7 +34,7 @@ export const YMClick: FC<IYMClickProps> = ({ metrik_id, name, child = "", type =
       __html: /*html */`<a 
       href="${link}" 
       style="${styleNest}"
-      onclick="ym(${metrik_id},'reachGoal','${name}')" ${target ? 'target="' + target + '"' : ''}>
+      onclick="${enabled ? onclickString : ""}" ${target ? 'target="' + target + '"' : ''}>
       ${child}
       </a>`}}>
     </div>
