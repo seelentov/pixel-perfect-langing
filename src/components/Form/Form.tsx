@@ -75,7 +75,7 @@ export const Form = ({ type = 'default' }) => {
     };
 
     return (
-        <form className={cn(styles.form, type === 'default' && styles.default) + " modal-form"} onSubmit={handleSubmit}>
+        <form className={cn(styles.form, type === 'default' && styles.default) + " modal-form"}>
             {type === 'default' &&
                 <>
                     <h2 className='text-header'>Закажите звонок</h2>
@@ -101,7 +101,7 @@ export const Form = ({ type = 'default' }) => {
       />}
             
 
-            <Button dubleText='Отправить'>
+            <Button dubleText='Отправить' onClick={handleSubmit}>
                 <YMClick child="Отправить" name="form_action" metrik_id={96723379} styleNest="display: inline" />
             </Button>
         </form>
