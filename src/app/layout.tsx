@@ -5,6 +5,7 @@ import { API_URL } from "@/core/config/api.config";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "../style/style.scss";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 const inter = Montserrat({ subsets: ["latin"] });
 
@@ -45,8 +46,9 @@ export default function RootLayout({
         <YMCore metrik_id={97828066} />
         <Header />
         <main className="wrapper">
-          {children}
+            {children}
         </main>
+
         <Footer />
       </body>
     </html>

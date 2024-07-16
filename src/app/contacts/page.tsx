@@ -6,6 +6,7 @@ import Image from 'next/image';
 import styles from './page.module.scss';
 import { Form } from "@/components/Form/Form";
 import { HiddenData } from "@/components/UI/HiddenPhone/HiddenData";
+import cn from 'classnames';
 
 
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ export default async function Contacts() {
 
   return (
     <div className={styles.main}>
-      <div className="content container">
+      <div className={cn("content", "container", styles.container)}>
 
         <div className={styles.wrapper}>
           <div className={styles.left}>

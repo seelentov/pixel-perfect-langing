@@ -15,6 +15,8 @@ export interface IBannerProps {
 
 export const Banner: FC<IBannerProps> = ({ data }) => {
 
+  
+
   return (
     <section className={styles.main}>
       <Swiper
@@ -27,7 +29,7 @@ export const Banner: FC<IBannerProps> = ({ data }) => {
       >
         {data.map((bannerItem, index) => {
           return (
-            <SwiperSlide key={bannerItem.id}><BannerItem {...{ ...bannerItem }} pos={index === 0 ? 'first' : index === data.length - 1 ? 'last' : false}/></SwiperSlide>
+            <SwiperSlide key={bannerItem.id}><BannerItem {...{ ...bannerItem }} pos={index === 0 ? 'first' : index === (data.length - 1) ? 'last' : false}/></SwiperSlide>
           )
         })}
       </Swiper>

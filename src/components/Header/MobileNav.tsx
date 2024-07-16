@@ -134,7 +134,7 @@ export const MobileNav = ({ serviceLinks }: { serviceLinks: MenuLink[] }) => {
             {defaultNavItems.links.map(({ id, href: mainHref, name, sublist }) => {
               if (!sublist) {
                 return <li key={id} className={styles.navMobileListItem} onClick={() => changeOpenState('close', setOpen)}>
-                  <Link href={mainHref}>{name}</Link>
+                  <Link href={"/"+mainHref}>{name}</Link>
                 </li>
               }
               return <li key={id} className={styles.navMobileListItem}>

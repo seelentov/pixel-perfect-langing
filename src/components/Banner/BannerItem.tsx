@@ -6,13 +6,15 @@ import Link from 'next/link';
 import { FC, useEffect, useRef, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import styles from './Banner.module.scss';
+import cn from 'classnames';
 
 
 export const BannerItem: FC<Omit<IBanner, 'id'> & { pos?: 'last' | 'first' | false }> = ({ header, headerType, pos, description, image, type, href }) => {
+
   if (href) {
     return (
       <Link href={href}>
-        <div className={styles.container}>
+        <div className={cn(styles.container, (pos === "last" || pos == "first") && styles.overflowHidden )}>
           <div className={styles.item}>
             <div className={styles.itemText}>
               {headerType === 'h1' ? <h1 className='text-header'>{header}</h1> : <h2 className='text-header'>{header}</h2>}
@@ -29,7 +31,7 @@ export const BannerItem: FC<Omit<IBanner, 'id'> & { pos?: 'last' | 'first' | fal
     );
   }
   return (
-    <div className={styles.container}>
+    <div className={cn(styles.container, (pos === "last" || pos == "first") && styles.overflowHidden )}>
       <div className={styles.item}>
         <div className={styles.itemText}>
           {headerType === 'h1' ? <h1 className='text-header'>{header}</h1> : <h2 className='text-header'>{header}</h2>}
@@ -56,8 +58,6 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
 
   const [isAutoScroll, setIsAutoScroll] = useState<boolean>(true)
   const screenRef = useRef<any>(null)
-
-
 
   useEffect(() => {
 
@@ -138,34 +138,6 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
           />
         </BrowserView>
         <MobileView className={styles.itemImageMobileLaptop} style={position}>
-          {(pos === 'last' || pos === 'first') ?
-            <>
-              <div
-                style={{ cursor: `url('/scroll-cursor.svg'), auto` }}
-                ref={screenRef}
-                className={styles.itemImageScreenMobileLaptopSingle}
-                onMouseEnter={() => setIsAutoScroll(false)}
-              >
-                <Image src={image} alt={header}
-                  priority
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  style={{ width: '100%', height: 'auto' }}
-                />
-              </div>
-
-              <Image src={`/laptop-2.png`} alt={header}
-                priority
-                className={styles.itemImageDeviceMobileLaptop}
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: '100%' }}
-              />
-            </>
-            :
-            <>
               <div
                 style={{
                   cursor: `url('/scroll-cursor.svg'), auto`,
@@ -192,8 +164,6 @@ const BannerItemPreview: FC<IBannerItemPreviewProps> = ({ image, header, type, p
                 sizes="100vw"
                 style={{ width: '100%' }}
               />
-            </>
-          }
         </MobileView>
       </>
     )
