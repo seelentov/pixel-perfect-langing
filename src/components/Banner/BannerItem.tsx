@@ -18,7 +18,7 @@ export const BannerItem: FC<Omit<IBanner, 'id'> & { pos?: 'last' | 'first' | fal
           <div className={styles.item}>
             <div className={styles.itemText}>
               {headerType === 'h1' ? <h1 className='text-header'>{header}</h1> : <h2 className='text-header'>{header}</h2>}
-              <p>{description}</p>
+              <p>{description.replace(/(<([^>]+)>)/gi, "")}</p>
             </div>
             <BannerItemPreview
               image={getImageFromApiObject(image)}
