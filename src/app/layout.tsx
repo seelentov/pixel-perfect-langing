@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={inter.className}>
-        <YMCore metrik_id={97828066} />
+        <YMCore metrik_id={97851645} />
         <Header />
         <main className="wrapper">
             {children}

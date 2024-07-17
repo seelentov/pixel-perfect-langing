@@ -7,7 +7,7 @@ import { getItemByFilter } from "@/core/api/getItemsByFilter";
 import { API_URL } from "@/core/config/api.config";
 import { parseObjToQuerytsts } from "@/core/utils/api/parseObjToQuery";
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 
 export async function generateMetadata(

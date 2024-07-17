@@ -5,7 +5,7 @@ import { baseFetch } from '@/core/api/baseFetch';
 import { getItemByFilter, getItemsByFilter } from '@/core/api/getItemsByFilter';
 import { API_URL } from '@/core/config/api.config';
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 export async function generateMetadata(
   { params }: ICategoryPage
@@ -53,6 +53,11 @@ export default async function Category({ params }: ICategoryPage) {
     ['populate', 'desktopExample'],
     ['populate', 'mobileExample']
   ])
+
+  if (params.category === "mobile") {
+    redirect("/mobile/android");
+  }
+
 
   const serializedServices: IService[] = services.map(item => {
     return { ...item, href: `/${params.category}/${item.href}` }
