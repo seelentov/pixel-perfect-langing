@@ -96,4 +96,16 @@
 
     }
   }
+
+  strong{
+    font-weight: 500;
+  }
+}
+
+.paddings{
+  padding: 106px 0;
+
+  @media (max-width: 1023px) {
+    padding: 60px 0;
+  }
 }

@@ -6,8 +6,11 @@ import { FAQ } from "@/components/FAQ/FAQ";
 import { ModalForm } from "@/components/ModalForm/ModalForm";
 import { Portfolio } from "@/components/Portfolio/Portfolio";
 import { Stages } from "@/components/Stages/Stages";
+import { UIListing } from "@/components/UI/UIListing/UIListing";
+import { IUIListingItemProps } from "@/components/UI/UIListing/UIListingItem";
 import { baseFetch } from "@/core/api/baseFetch";
 import { getSerializedServices } from "@/core/api/getSerializedServices";
+import { getSpecials } from "@/core/api/getSpecials";
 import { API_URL } from "@/core/config/api.config";
 import { parseObjToQuerytsts } from "@/core/utils/api/parseObjToQuery";
 import { Metadata } from "next";
@@ -43,6 +46,9 @@ export default async function HomePage() {
 
   const categoriesData = await getSerializedServices()
 
+  const specialsData: IUIListingItemProps[] = await getSpecials()
+
+
   const portfolioData: IPortfolio[] = await baseFetch('/api/portfolios?' + parseObjToQuerytsts([
     ['populate', 'exampleDesktop'],
     ['populate', 'exampleMobile']
@@ -56,6 +62,13 @@ export default async function HomePage() {
     <>
       {bannerData && <Banner data={bannerData} />}
       <hr className="hr" />
+      
+      {specialsData &&
+        <div className="container content">
+          <h2 className='text-header'>Выгодные предложения</h2>
+          <UIListing items={specialsData} headerType="h3"/>
+        </div>}
+      <hr className="hr" />
       {advantagesData && <Advantages advantages={advantagesData} />}
       <hr className="hr" />
       {categoriesData && <Catalog header={'Каталог услуг'} data={categoriesData} />}
@@ -66,7 +79,7 @@ export default async function HomePage() {
       <hr className="hr" />
       {faqData && <FAQ header={'Частые вопросы'} data={faqData} />}
       <Call padding="none" />
-      <ModalForm/>
+      <ModalForm />
     </>
   );
 }

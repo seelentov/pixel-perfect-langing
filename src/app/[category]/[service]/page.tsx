@@ -75,7 +75,7 @@ export default async function Service({ params }: IServicePage) {
 
   return (
     <>
-      <div className="container" style={{padding: 0}}>
+      <div className="container " style={{padding: 0}}>
         <BannerItem header={service.header} headerType='h1' pos="first" image={image} description={service.description} type={imageType} />
       </div>
       <hr className="hr" />
