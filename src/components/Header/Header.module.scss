@@ -1,3 +1,71 @@
+.navDesktopListItem.specialLink{
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: background 0.5s ease-in-out;
+  transition: scale 0.2s ease-in-out;
+  &:hover{
+   scale: 0.90;
+    a{
+      animation: none;
+
+
+      background: red !important;
+      color: white !important;
+    }
+  }
+
+  a{
+    transition: color 0.5s ease-in-out, background 0.5s ease-in-out;
+    animation: none;
+    animation-duration: 2s;
+    animation-name: redblink;
+    animation-iteration-count: infinite;
+    color: inherit;
+    display: block;
+    padding: 13px;
+    border-radius: 10px;
+  }
+}
+
+@keyframes redblink{
+  0%{
+    background: red;
+
+      color: white;
+  }
+  50%{
+    background: rgb(255, 255, 255);
+
+      color: black;
+
+  }
+  100%{
+    background: red;
+
+    color: white;
+
+  }
+}
+
+.specialLinkMobile{
+  padding-left: 0 !important;
+  a{
+  padding-left: 15px !important;
+
+    animation-duration: 2s;
+    animation-name: redblink;
+    animation-iteration-count: infinite;
+  
+    background-color: red;
+
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+
 .main {
   width: 100%;
   position: fixed;
@@ -259,7 +327,6 @@
   top: 0;
   left: -110%;
   width: 100%;
-  padding: 0 0 0 15px;
   height: 100vh;
 
   hr {
@@ -279,7 +346,7 @@
   position: absolute;
   top: 0;
   width: 100%;
-  padding: 0 0 0 15px;
+
   height: 100vh;
   z-index: 900;
   max-width: 266px;
@@ -350,6 +417,7 @@
 
 .navMobileListItem {
   width: 100%;
+  padding-left: 15px;
 
   & a,
   button {

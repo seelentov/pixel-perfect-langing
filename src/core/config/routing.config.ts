@@ -8,11 +8,6 @@ export const ROUTING: ROUTING = {
       name: 'Примеры работ'
     },
     {
-      id: 6,
-      href: 'specials',
-      name: 'АКЦИИ'
-    },
-    {
       id: 7,
       href: 'contacts',
       name: 'Контакты'

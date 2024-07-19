@@ -98,6 +98,8 @@ export const MobileNav = ({ serviceLinks }: { serviceLinks: MenuLink[] }) => {
             </li>
           )}
         </ul>
+
+
       </div>
     )
   }
@@ -143,6 +145,10 @@ export const MobileNav = ({ serviceLinks }: { serviceLinks: MenuLink[] }) => {
                 </button>
               </li>
             })}
+                    <li className={cn(styles.navMobileListItem, styles.specialLinkMobile)}>
+            <Link href="/specials">Акции</Link>
+          </li>
+
           </ul>
         </div>
         <MobileNavSub />
