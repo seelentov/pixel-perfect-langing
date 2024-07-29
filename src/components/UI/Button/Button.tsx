@@ -2,12 +2,13 @@ import { FC, HTMLAttributes } from 'react';
 import styles from './Button.module.scss';
 
 export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
-  dubleText?: string
+  dubleText?: string,
+  disabled?: boolean
 }
 
-export const Button: FC<IButtonProps> = ({ children, dubleText="", ...rest }) => {
+export const Button: FC<IButtonProps> = ({ children, dubleText="", disabled = false, ...rest }) => {
   return (
-    <button className={styles.main} {...rest}>
+    <button className={styles.main} disabled={disabled} {...rest}>
       <noindex>
         <span className={styles.textHover}>
           <span>{children}</span>

@@ -1,3 +1,13 @@
+.main:disabled{
+  opacity: 0.5;
+  pointer-events: none;
+  &:hover {
+    .textHover {
+      width: 0%;
+    }
+  }
+}
+
 .main {
   background-color: var(--color_main-text);
   border: 2px var(--color_main-text) solid;

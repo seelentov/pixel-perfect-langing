@@ -74,6 +74,8 @@ export const Form = ({ type = 'default' }) => {
         }
     };
 
+    const enabledButton = Object.values(formData).every(field => field.trim() != "") && token != ""
+
     return (
         <form className={cn(styles.form, type === 'default' && styles.default) + " modal-form"}>
             {type === 'default' &&
@@ -101,8 +103,8 @@ export const Form = ({ type = 'default' }) => {
       />}
             
 
-            <Button dubleText='Отправить' onClick={handleSubmit}>
-                <YMClick child="Отправить" name="form_action" metrik_id={96723379} styleNest="display: inline" />
+            <Button dubleText='Отправить' onClick={handleSubmit} disabled={!enabledButton}>
+                Отправить
             </Button>
         </form>
     )
